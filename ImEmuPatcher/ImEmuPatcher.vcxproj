@@ -87,9 +87,9 @@
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(SolutionDir)Lib\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)Include;$(IncludePath);$(ProjectDir)Deps\imgui; $(IncludePath);$(ProjectDir)Deps\imgui\backends</IncludePath>
-    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Include;$(IncludePath);$(ProjectDir)Deps\imgui; $(IncludePath);$(ProjectDir)Deps\imgui\backends</ExternalIncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(SolutionDir)Lib\x64</LibraryPath>
+    <IncludePath>$(SolutionDir)Include;$(IncludePath);$(ProjectDir)Deps\imgui; $(IncludePath);$(ProjectDir)Deps\imgui\backends; $(SolutionDir)Include\jdbc</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)Include;$(IncludePath);$(ProjectDir)Deps\imgui; $(IncludePath);$(ProjectDir)Deps\imgui\backends; $(SolutionDir)Include\jdbc</ExternalIncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(SolutionDir)Lib\x64; $(SolutionDir)Lib\x64\sql;</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -136,7 +136,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)SDL2.lib;SDL2main.lib;SDL2_Image.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)SDL2.lib;SDL2main.lib;SDL2_Image.lib; mysqlcppconn.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Lib\x64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -146,17 +146,17 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Include;$(ProjectDir)Deps\imgui; $(IncludePath);$(ProjectDir)Deps\imgui\backends</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Include;$(ProjectDir)Deps\imgui; $(IncludePath);$(ProjectDir)Deps\imgui\backends; $(SolutionDir)Include\jdbc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)SDL2.lib;SDL2main.lib;SDL2_Image.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)SDL2.lib;SDL2main.lib;SDL2_Image.lib;mysqlcppconn.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Lib\x64;$(SolutionDir)Lib\x64\vs14;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
